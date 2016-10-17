@@ -32,10 +32,31 @@ int dram_init(void)
 
 	return 0;
 }
+void reset_phy(void)
+{
+  // DDR.
+  u32 val = readl(0x1e780004);
+  // set D3 to output.
+  val |= (1 << 27);
+  writel(val, 0x1e780004);
+
+  // VAL
+  val = readl(0x1e780000);
+  // set D3 low
+  val &= ~(1 << 27);
+  writel(val, 0x1e780000);
+
+  mdelay(2);
+
+  // set D3 high
+  val |= (1 << 27);
+  writel(val, 0x1e780000);
+}
 
 #ifdef CONFIG_FTGMAC100
 int board_eth_init(bd_t *bd)
 {
+	reset_phy();
         return ftgmac100_initialize(bd);
 }
 #endif
@@ -43,6 +64,7 @@ int board_eth_init(bd_t *bd)
 #ifdef CONFIG_ASPEEDNIC
 int board_eth_init(bd_t *bd)
 {
+	reset_phy();
         return aspeednic_initialize(bd);
 }
 #endif
