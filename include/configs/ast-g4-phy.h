@@ -22,6 +22,9 @@
 /* platform.S settings */
 #define CONFIG_CPU_420			1
 #define CONFIG_DRAM_528			1
+#define CONFIG_SLT
+#define CFG_CMD_SLT             (CFG_CMD_MACTEST)
+
 
 /*
  * Environment Config
@@ -124,3 +127,4 @@
 #define CONFIG_RANDOM_MACADDR 0
 
 #endif	/* __AST_G4_NCSI_CONFIG_H */
+
