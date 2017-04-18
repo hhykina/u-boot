@@ -1,1 +1,3 @@
-obj-y   = ast-g4.o  mactest.o slt.o
+obj-y   += ast-g4.o
+obj-y   += slt.o
+obj-y   += mactest.o
