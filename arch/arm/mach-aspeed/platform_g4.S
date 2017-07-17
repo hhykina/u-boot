@@ -74,7 +74,7 @@
    record_dll2_pass_range,
    record_dll2_pass_range_h,
    are for DRAM calibration */
-
+#define CONFIG_DRAM_ECC
 PATTERN_TABLE:
     .word   0xff00ff00
     .word   0xcc33cc33
